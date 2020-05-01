@@ -9841,7 +9841,7 @@ Last Tiddler</pre>
 <div created="20200430161700225" modified="20200430185837466" tags="" title="First Post">
 <pre>Test First post - changed</pre>
 </div>
-<div created="20200501094254380" modified="20200501101805652" tags="Install Windows10 [[Jupyter Notebook]]" title="Install and run a Jupyter Notebook">
+<div created="20200501094254380" modified="20200501103629257" tags="Install Windows10 [[Jupyter Notebook]]" title="Install and run a Jupyter Notebook">
 <pre>It's pretty easy to install Jupyter notebook on Windows 10 with a single version of Python 3 installed. In a command prompt or Powershell terminal enter:
 
 ```
@@ -9854,7 +9854,18 @@ Then to run a notebook enter:
 jupyter notebook
 ```
 
-Look out for a new tab opening in your default browser - that's the Jupyter Home Page and it shows a list of the files and folders that are in the current working directory where the command was issued. You can browse the file system to open and run a notebook. When you have finished close the notebook tab, then click quit in the Jupyter Home Page. At that point the command prompt should be active again.
+Look out for a new tab opening in your default browser - that's the Jupyter Home Page and it shows a list of the files and folders that are in the current working directory where the command was issued. You can browse the file system to open and run a notebook. When you have finished close the notebook tab, then click quit in the Jupyter Home Page. At that point the command prompt should be active again. 
+
+If you close the tabs you can try to get them back: Ctrl+Shift+T reopens the last-closed tab in most browsers. However you may need to cancel the notebook server in the command prompt. Ctrl+c should do that.  I've found that I need to wait a while and then press Enter once or twice to get back to the command prompt.
+
+When you reopen a tab it is likely to ask you for an authorization token. To find the token open another Command Prompt and type 
+
+```
+jupyter notebook list
+```
+
+This will show you the running notebooks and their tokens. You can copy and paste the token into the page to regain access to the notebook. It is possible to configure a password instead. See https://jupyter-notebook.readthedocs.io/en/stable/public_server.html
+
 
 </pre>
 </div>
