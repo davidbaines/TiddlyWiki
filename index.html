@@ -143,6 +143,8 @@ Error message and password prompt
 
 <li>$:/config/DownloadSaver/AutoSave</li>
 
+<li>$:/config/RelinkOnRename</li>
+
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/fold</li>
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/fold-bar</li>
@@ -199,11 +201,11 @@ Error message and password prompt
 
 <li>First Post</li>
 
+<li>Installing Jupyter Notebook</li>
+
 <li>Installing Tensorflow on Windows</li>
 
 <li>New Tiddler</li>
-
-<li>Using TensorFlow with Jupyter Notebook</li>
 
 </ul>
 </p>
@@ -220,6 +222,9 @@ Error message and password prompt
 
 <div id="storeArea" style="display:none;">
 <div created="20200501094004272" modified="20200501094004272" title="$:/config/DownloadSaver/AutoSave">
+<pre>yes</pre>
+</div>
+<div created="20200501101229427" modified="20200501101229427" title="$:/config/RelinkOnRename">
 <pre>yes</pre>
 </div>
 <div created="20200430184251077" modified="20200430184309482" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/fold">
@@ -9660,7 +9665,7 @@ Last Tiddler</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200501093956555" list="[[Using TensorFlow with Jupyter Notebook]] $:/ControlPanel [[Installing Tensorflow on Windows]] GettingStarted First Post Last Tiddler" modified="20200501093956555" title="$:/StoryList">
+<div created="20200501093956555" list="[[Installing Jupyter Notebook]] $:/ControlPanel [[Installing Tensorflow on Windows]] GettingStarted First Post Last Tiddler" modified="20200501093956555" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9836,6 +9841,23 @@ Last Tiddler</pre>
 <div created="20200430161700225" modified="20200430185837466" tags="" title="First Post">
 <pre>Test First post - changed</pre>
 </div>
+<div created="20200501094254380" modified="20200501101232080" tags="Install Windows10 [[Jupyter Notebook]]" title="Installing Jupyter Notebook">
+<pre>It's pretty easy to install Jupyter notebook on Windows 10 with a single version of Python 3 installed. In a command prompt or PowerShell terminal enter:
+
+```
+pip install jupyter
+```
+
+Then to run a notebook enter:
+
+```
+jupyter notebook
+```
+
+Look out for a new tab opening in your default browser - that's the Jupyter Home Page and it shows a 
+
+</pre>
+</div>
 <div created="20200501091029398" modified="20200501093935706" tags="Windows10 TensorFlow Install" title="Installing Tensorflow on Windows">
 <pre>First of all the TensorFlow site recommends using Docker. With good reason because setting it up can be time consuming because there may need to be a lot of troubleshooting. This is the case at least in April 2020. TensorFlow has a large number of dependencies and some of them are depedencies on a specific version, or range of versions of a package.
 
@@ -9919,23 +9941,6 @@ Which indicates that it has created a tf.Tensor with a value of -1311.5256  - th
 </div>
 <div created="20200430161407854" modified="20200430161457641" tags="" title="New Tiddler">
 <pre>Test new Tiddler</pre>
-</div>
-<div created="20200501094254380" modified="20200501095114137" tags="Install TensorFlow Windows10 [[Jupyter Notebook]]" title="Using TensorFlow with Jupyter Notebook">
-<pre>It's pretty easy to install Jupyter notebook on Windows 10 with a single version of Python 3 installed. In a command prompt or PowerShell terminal enter:
-
-```
-pip install jupyter
-```
-
-Then to run a notebook enter:
-
-```
-jupyter notebook
-```
-
-Look out for a new tab opening in your default browser - that's the Jupyter Home Page and it shows a 
-
-</pre>
 </div>
 
 
