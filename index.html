@@ -141,6 +141,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/DownloadSaver/AutoSave</li>
+
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/fold</li>
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/fold-bar</li>
@@ -164,6 +166,10 @@ Error message and password prompt
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
 
 <li>$:/state/tab--1963855381</li>
 
@@ -191,6 +197,8 @@ Error message and password prompt
 
 <li>First Post</li>
 
+<li>Installing Tensorflow on Windows</li>
+
 <li>New Tiddler</li>
 
 </ul>
@@ -207,6 +215,9 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20200501094004272" modified="20200501094004272" title="$:/config/DownloadSaver/AutoSave">
+<pre>yes</pre>
+</div>
 <div created="20200430184251077" modified="20200430184309482" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/fold">
 <pre>hide</pre>
 </div>
@@ -9615,6 +9626,12 @@ Last Tiddler</pre>
 <div created="20200430161251923" modified="20200430161253234" title="$:/SiteTitle">
 <pre>Notes</pre>
 </div>
+<div created="20200501092846974" modified="20200501092846974" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
+<div created="20200501092853663" modified="20200501093943764" title="$:/state/sidebar">
+<pre>yes</pre>
+</div>
 <div created="20200430184236139" modified="20200430184329929" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
@@ -9627,7 +9644,7 @@ Last Tiddler</pre>
 <div created="20200430161828067" modified="20200430201542680" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
-<div created="20200430161831917" modified="20200430184406099" title="$:/state/tab-2065006209">
+<div created="20200430161831917" modified="20200501094042300" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
 <div created="20200430184317421" modified="20200430184327711" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9636,7 +9653,7 @@ Last Tiddler</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200430161823750" list="$:/ControlPanel [[First Post]] [[New Tiddler]] GettingStarted" modified="20200430161823750" title="$:/StoryList">
+<div created="20200501093956555" list="$:/ControlPanel [[Installing Tensorflow on Windows]] GettingStarted First Post Last Tiddler" modified="20200501093956555" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9652,7 +9669,7 @@ Last Tiddler</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/David/Downloads/tiddlydesktop-win64-v0.0.13/empty.html&quot;
+            &quot;text&quot;: &quot;file:///D:/GitHub/TiddlyWiki/index.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9672,7 +9689,7 @@ Last Tiddler</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/David/Downloads/tiddlydesktop-win64-v0.0.13/empty.html&quot;
+            &quot;text&quot;: &quot;/D:/GitHub/TiddlyWiki/index.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9811,6 +9828,87 @@ Last Tiddler</pre>
 </div>
 <div created="20200430161700225" modified="20200430185837466" tags="" title="First Post">
 <pre>Test First post - changed</pre>
+</div>
+<div created="20200501091029398" modified="20200501093935706" tags="Windows10 TensorFlow Install" title="Installing Tensorflow on Windows">
+<pre>First of all the TensorFlow site recommends using Docker. With good reason because setting it up can be time consuming because there may need to be a lot of troubleshooting. This is the case at least in April 2020. TensorFlow has a large number of dependencies and some of them are depedencies on a specific version, or range of versions of a package.
+
+There are still reasons for installing TensorFlow on Windows directly. The main one is that the instructions indicate that there isn't a Docker image for Windows that works yet. 
+
+There's a possibility of one that works if you're on the Fast Release Cycle of the Windows Insiders program. However I tried that and discovered there's no going back to your normal version of Windows without reinstallation of the OS.
+
+https://www.tensorflow.org/install/pip#windows
+
+I want to install TensorFlow on Windows 10 with Nvidia GPU support. 
+I'll need:
+Python 3.5–3.7
+pip 19.0 or later
+64Bit Windows 10
+Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019
+A CUDA enabled GPU
+
+The instructions recommend also having virtualenv.  For a venv installation, install with:
+
+```
+(venv) $pip install --upgrade tensorflow
+```
+
+It isn't essential to use a virtual environment, it is possible to have a system-wide install of TensorFlow:
+
+```
+$pip3 install --user --upgrade tensorflow  # install in $HOME
+```
+It's also possible to
+
+```
+pip install tensorflow
+```
+If you only have one version of Python 3 installed and are installing to the system not for a single user.
+
+Test the installation
+
+```
+C:\Windows\system32&gt;python
+Python 3.7.7 (tags/v3.7.7:d7c567b08f, Mar 10 2020, 10:41:24) [MSC v.1900 64 bit (AMD64)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import tensorflow as tf
+2020-05-01 10:23:38.866745: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2020-05-01 10:23:38.871889: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+&gt;&gt;&gt;
+```
+
+If that has no errors then get it to do some work with:
+
+```
+print(tf.reduce_sum(tf.random.normal([1000, 1000])))
+```
+The output may look something like this:
+
+```
+2020-05-01 10:36:03.474228: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
+2020-05-01 10:36:03.653597: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties:
+pciBusID: 0000:08:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 11.00GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-05-01 10:36:03.660719: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 1 with properties:
+pciBusID: 0000:42:00.0 name: GeForce GTX 1080 Ti computeCapability: 6.1
+coreClock: 1.582GHz coreCount: 28 deviceMemorySize: 11.00GiB deviceMemoryBandwidth: 451.17GiB/s
+2020-05-01 10:36:03.666832: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudart64_101.dll'; dlerror: cudart64_101.dll not found
+2020-05-01 10:36:03.670077: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cublas64_10.dll'; dlerror: cublas64_10.dll not found
+2020-05-01 10:36:03.674489: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cufft64_10.dll'; dlerror: cufft64_10.dll not found
+2020-05-01 10:36:03.677750: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'curand64_10.dll'; dlerror: curand64_10.dll not found
+2020-05-01 10:36:03.681705: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cusolver64_10.dll'; dlerror: cusolver64_10.dll not found
+2020-05-01 10:36:03.685111: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cusparse64_10.dll'; dlerror: cusparse64_10.dll not found
+2020-05-01 10:36:03.688387: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudnn64_7.dll'; dlerror: cudnn64_7.dll not found
+2020-05-01 10:36:03.691967: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1592] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-05-01 10:36:03.699857: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2020-05-01 10:36:03.728762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-05-01 10:36:03.731253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]
+tf.Tensor(-1311.5256, shape=(), dtype=float32)
+&gt;&gt;&gt;
+```
+
+Which indicates that it has created a tf.Tensor with a value of -1311.5256  - this is a random number.
+</pre>
 </div>
 <div created="20200430161407854" modified="20200430161457641" tags="" title="New Tiddler">
 <pre>Test new Tiddler</pre>
