@@ -203,6 +203,8 @@ Error message and password prompt
 
 <li>Error cudart64_101.dll not found.</li>
 
+<li>Error cudnn64_7.dll not found</li>
+
 <li>First Post</li>
 
 <li>Install and run a Jupyter Notebook</li>
@@ -9645,8 +9647,8 @@ Last Tiddler</pre>
 <div created="20200501092846974" modified="20200501094437654" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200501092853663" modified="20200501110501693" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20200501092853663" modified="20200502070811065" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200430184236139" modified="20200430184329929" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -9672,7 +9674,7 @@ Last Tiddler</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200501193557851" list="[[Error cudart64_101.dll not found.]] [[Installing Tensorflow on Windows]] [[Install and run a Jupyter Notebook]] GettingStarted First Post Last Tiddler" modified="20200501193603794" title="$:/StoryList">
+<div created="20200502070523565" list="[[Error cudnn64_7.dll not found]] [[Error cudart64_101.dll not found.]] GettingStarted First Post Last Tiddler" modified="20200502070523565" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9845,14 +9847,88 @@ Last Tiddler</pre>
     }
 }</pre>
 </div>
-<div created="20200501193607057" modified="20200501194331534" tags="" title="Error cudart64_101.dll not found.">
+<div created="20200501193607057" modified="20200501193937677" tags="" title="Error cudart64_101.dll not found.">
 <pre>When running any code that requires the CUDA toolkit this error may appear.  If the toolkit is not installed then it can be installed from https://developer.nvidia.com/cuda-10.1-download-archive-base
 
 If the toolkit is installed and the .dll is found on your machine then check that its folder is included in the Path variable.
 
-While installing the toolkit there was a message saying that not all functionality would be present because Visual Studio was not installed.  I  installed the free Visual Studio Code https://code.visualstudio.com/
-and restarted the machine.
-However the message remained that not all functionality would be present.
+While installing the toolkit there was a message saying that not all functionality would be present because Visual Studio was not installed.  I  installed</pre>
+</div>
+<div created="20200502070528282" modified="20200502072948696" tags="" title="Error cudnn64_7.dll not found">
+<pre>While using TensorFlow you might see this error. 
+
+```
+2020-05-02 08:03:06.349309: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'cudnn64_7.dll'; dlerror: cudnn64_7.dll not found
+```
+It's indicating that it can't find the CuDNN .dll that is required. 
+
+When I saw this error there was a helpful message:
+
+```
+Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+```
+
+At https://www.tensorflow.org/install/gpu I found this information.
+
+!! Hardware requirements
+
+The following GPU-enabled devices are supported:
+
+NVIDIA® GPU card with CUDA® Compute Capability 3.5 or higher. See the list of CUDA-enabled GPU cards.
+
+!!Software requirements
+
+The following NVIDIA® software must be installed on your system:
+
+#  NVIDIA® GPU drivers —CUDA 10.1 requires 418.x or higher.
+#  CUDA® Toolkit —TensorFlow supports CUDA 10.1 (TensorFlow &gt;= 2.1.0)
+#  CUPTI ships with the CUDA Toolkit.
+#  cuDNN SDK (&gt;= 7.6)
+#  (Optional) TensorRT 6.0 to improve latency and throughput for inference on some models.
+
+The drivers were installed - I think that Windows 10 even installed those automatically shortly after a fresh installation.
+The CUDA toolkit version is important, with it you have the option of installing the CUPTI - so ensure that option is selected when installing the CUDA Toolkit.
+
+The cuDNN SDK requires a free Nvidia developer account.  Then it can be downloaded from:
+https://developer.nvidia.com/rdp/cudnn-download
+
+Check that the version is not only &gt;=7.6 but also the version compatible with the CUDA Toolkit version 10.1
+Then choose the version for Windows 10.  Lots of options and it is very likely that only one will work. The file downloaded is zipped and contains three files that need to be copied to the correct places.
+4.3. Installing cuDNN On Windows
+The following steps describe how to build a cuDNN dependent program. In the following sections the CUDA v9.0 is used as example:
+
+    Your CUDA directory path is referred to as C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2
+    Your cuDNN directory path is referred to as &lt;installpath&gt;
+
+    Navigate to your &lt;installpath&gt; directory containing cuDNN.
+    Unzip the cuDNN package.
+
+    cudnn-10.2-windows7-x64-v7.6.5.32.zip
+
+    or
+
+    cudnn-10.2-windows10-x64-v7.6.5.32.zip
+
+    Copy the following files into the CUDA Toolkit directory.
+        Copy &lt;installpath&gt;\cuda\bin\cudnn64_7.6.5.32.dll to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin.
+        Copy &lt;installpath&gt;\cuda\ include\cudnn.h to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include.
+        Copy &lt;installpath&gt;\cuda\lib\x64\cudnn.lib to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64.
+    Set the following environment variables to point to where cuDNN is located. To access the value of the $(CUDA_PATH) environment variable, perform the following steps:
+        Open a command prompt from the Start menu.
+        Type Run and hit Enter.
+        Issue the control sysdm.cpl command.
+        Select the Advanced tab at the top of the window.
+        Click Environment Variables at the bottom of the window.
+        Ensure the following values are set:
+
+        Variable Name: CUDA_PATH 
+        Variable Value: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2
+
+    Include cudnn.lib in your Visual Studio project.
+        Open the Visual Studio project and right-click on the project name.
+        Click Linker &gt; Input &gt; Additional Dependencies.
+        Add cudnn.lib and click OK.
+
 
 </pre>
 </div>
