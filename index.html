@@ -9647,8 +9647,8 @@ Last Tiddler</pre>
 <div created="20200501092846974" modified="20200501094437654" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200501092853663" modified="20200502073009693" title="$:/state/sidebar">
-<pre>no</pre>
+<div created="20200501092853663" modified="20200502073837564" title="$:/state/sidebar">
+<pre>yes</pre>
 </div>
 <div created="20200430184236139" modified="20200430184329929" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -9854,7 +9854,7 @@ If the toolkit is installed and the .dll is found on your machine then check tha
 
 While installing the toolkit there was a message saying that not all functionality would be present because Visual Studio was not installed.  I  installed</pre>
 </div>
-<div created="20200502070528282" modified="20200502073836732" tags="" title="Error cudnn64_7.dll not found">
+<div created="20200502070528282" modified="20200502074457663" tags="" title="Error cudnn64_7.dll not found">
 <pre>While using TensorFlow you might see this error. 
 
 ```
@@ -9911,21 +9911,11 @@ Copy the following files into the CUDA Toolkit directory.
         Copy cuda\ include\cudnn.h to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include.
         Copy cuda\lib\x64\cudnn.lib to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64.
 
-    Set the following environment variables to point to where cuDNN is located. To access the value of the $(CUDA_PATH) environment variable, perform the following steps:
-        Open a command prompt from the Start menu.
-        Type Run and hit Enter.
-        Issue the control sysdm.cpl command.
-        Select the Advanced tab at the top of the window.
-        Click Environment Variables at the bottom of the window.
-        Ensure the following values are set:
+Check that the environment variable CUDA_PATH ==  &quot;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1&quot;
 
-        Variable Name: CUDA_PATH 
-        Variable Value: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2
+Easy way to do this is press the windows key and begin typing 'environment', after just 'env' I see that &quot;Edit the system environment variables is selected'. Hit enter.
 
-    Include cudnn.lib in your Visual Studio project.
-        Open the Visual Studio project and right-click on the project name.
-        Click Linker &gt; Input &gt; Additional Dependencies.
-        Add cudnn.lib and click OK.
+To include cudnn.lib in your Visual Studio project: open the Visual Studio project and right-click on the project name. Click Linker &gt; Input &gt; Additional Dependencies. Add cudnn.lib and click OK.
 
 
 </pre>
