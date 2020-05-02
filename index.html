@@ -9647,7 +9647,7 @@ Last Tiddler</pre>
 <div created="20200501092846974" modified="20200501094437654" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200501092853663" modified="20200502070811065" title="$:/state/sidebar">
+<div created="20200501092853663" modified="20200502073009693" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200430184236139" modified="20200430184329929" title="$:/state/tab--1963855381">
@@ -9854,7 +9854,7 @@ If the toolkit is installed and the .dll is found on your machine then check tha
 
 While installing the toolkit there was a message saying that not all functionality would be present because Visual Studio was not installed.  I  installed</pre>
 </div>
-<div created="20200502070528282" modified="20200502072948696" tags="" title="Error cudnn64_7.dll not found">
+<div created="20200502070528282" modified="20200502073836732" tags="" title="Error cudnn64_7.dll not found">
 <pre>While using TensorFlow you might see this error. 
 
 ```
@@ -9893,26 +9893,24 @@ The cuDNN SDK requires a free Nvidia developer account.  Then it can be download
 https://developer.nvidia.com/rdp/cudnn-download
 
 Check that the version is not only &gt;=7.6 but also the version compatible with the CUDA Toolkit version 10.1
-Then choose the version for Windows 10.  Lots of options and it is very likely that only one will work. The file downloaded is zipped and contains three files that need to be copied to the correct places.
-4.3. Installing cuDNN On Windows
-The following steps describe how to build a cuDNN dependent program. In the following sections the CUDA v9.0 is used as example:
+Then choose the version for Windows 10.  Lots of options and it is very likely that only one will work. The file downloaded is zipped and contains three files that need to be copied to the correct places. Then it's necessary to check and set environment variables.
+There are instructions at : https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html
 
-    Your CUDA directory path is referred to as C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2
-    Your cuDNN directory path is referred to as &lt;installpath&gt;
+Here's the part relevant for installing cuDNN On Windows
 
-    Navigate to your &lt;installpath&gt; directory containing cuDNN.
-    Unzip the cuDNN package.
+Your CUDA directory path is referred to as C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1
+Unzip the cuDNN package:   cudnn-10.1-windows10-x64-v7.6.5.32.zip inside there is the following folders and files:
+cuda
+   bin / cudnn64_7.dll
+   include / cudnn.h
+   lib / x64 / cudnn.lib
 
-    cudnn-10.2-windows7-x64-v7.6.5.32.zip
+   
+Copy the following files into the CUDA Toolkit directory.
+        Copy cuda\bin\cudnn64_7.6.5.32.dll to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin.
+        Copy cuda\ include\cudnn.h to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include.
+        Copy cuda\lib\x64\cudnn.lib to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64.
 
-    or
-
-    cudnn-10.2-windows10-x64-v7.6.5.32.zip
-
-    Copy the following files into the CUDA Toolkit directory.
-        Copy &lt;installpath&gt;\cuda\bin\cudnn64_7.6.5.32.dll to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin.
-        Copy &lt;installpath&gt;\cuda\ include\cudnn.h to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\include.
-        Copy &lt;installpath&gt;\cuda\lib\x64\cudnn.lib to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\lib\x64.
     Set the following environment variables to point to where cuDNN is located. To access the value of the $(CUDA_PATH) environment variable, perform the following steps:
         Open a command prompt from the Start menu.
         Type Run and hit Enter.
